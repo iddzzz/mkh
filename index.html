@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <img src="logomkai.webp" alt="LOGO FINAL MKAI">
+
+    <h1>Absen Menyimak Khutbah Hudhur</h1>
+    <h2>Majelis Batang-Gemuh</h2>
+    <div class="main">
+        <form method="POST">
+            <div class="nama">
+                <label for="nama">Nama : </label>
+                <input type="text" id="nama" name="nama" placeholder="Nama" class="form-data" >
+                <p></p>
+            </div>
+            <div class="no">
+                <label for="no">Nomor AIMS : </label>
+                <input type="text" id="no" name="aims" placeholder="Nomor AIMS" class="form-data" >
+                <p></p>
+            </div>
+            <div class="check">
+                <input type="checkbox" id="check" name="menyimak" class="form-data">
+                <label for="check">Saya menyimak khutbah Hudhur</label>
+                <p></p>
+            </div>
+            <div class="submit">
+                <button type="button">Kirim</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="bgModal">
+        <div class="modal">
+            <h3>Jazakumullah</h3>
+            <span>x</span>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
