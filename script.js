@@ -39,6 +39,9 @@ button.addEventListener('click',function(){
         },2000)
         return
     }
+
+    button.innerHTML = "Loading..."
+
     let data_elements = document.getElementsByClassName("form-data")
     
     let form_data = new FormData()
@@ -46,18 +49,25 @@ button.addEventListener('click',function(){
         form_data.append(data_elements[index].name, data_elements[index].value)
     }
     const ajax = new XMLHttpRequest();
-    ajax.open('POST', "https://script.google.com/macros/s/AKfycbz0NxLiAcTmoHvFRpKo48aYCNi-v3-PM31YIO14KTCNvJArhXsTf-qDR1h_pgKumgcG/exec")
-    ajax.send(form_data)
-    ajax.onreadystatechange = function(){
-        if (ajax.readyState == 4 && ajax.status == 200){
-            bgModal.classList.add('active');
-            modal.style.animation = 'muncul 0.5s';
-        } else {
-            alert('Periksa Koneksi Anda')
+    try {
+        ajax.open('POST', "https://script.google.com/macros/s/AKfycbz0NxLiAcTmoHvFRpKo48aYCNi-v3-PM31YIO14KTCNvJArhXsTf-qDR1h_pgKumgcG/exec")
+        ajax.send(form_data)
+        ajax.onreadystatechange = function(){
+            // console.log(ajax.readyState)
+            // console.log(ajax.status)
+            if (ajax.readyState == 4 && ajax.status == 200){
+                bgModal.classList.add('active');
+                modal.style.animation = 'muncul 0.5s';
+            } else if (ajax.readyState == 4 && ajax.status == 0) {
+                alert('Periksa Koneksi Anda')
+                button.innerHTML = "Kirim"
+            }
         }
+    } catch (error) {
+        alert('Periksa Koneksi Anda')
+        button.innerHTML = "Kirim"
     }
-
-
+ 
 
     // ajax.open("POST", url('https://script.google.com/macros/s/AKfycbz0NxLiAcTmoHvFRpKo48aYCNi-v3-PM31YIO14KTCNvJArhXsTf-qDR1h_pgKumgcG/exec'));
     // ajax.send();
@@ -68,4 +78,5 @@ closeModal.addEventListener('click',function(){
     bgModal.classList.remove('active');
     modal.style.animation = '';
     document.querySelector('form').reset();
+    button.innerHTML = "Kirim"
 });
