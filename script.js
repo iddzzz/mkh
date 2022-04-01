@@ -45,9 +45,11 @@ button.addEventListener('click',function(){
     let data_elements = document.getElementsByClassName("form-data")
     
     let form_data = new FormData()
+    form_data.append("timestamp", Date())
     for (let index = 0; index < data_elements.length; index++) {
         form_data.append(data_elements[index].name, data_elements[index].value)
     }
+
     const ajax = new XMLHttpRequest();
     try {
         ajax.open('POST', "https://script.google.com/macros/s/AKfycbz0NxLiAcTmoHvFRpKo48aYCNi-v3-PM31YIO14KTCNvJArhXsTf-qDR1h_pgKumgcG/exec")
